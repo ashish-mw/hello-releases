@@ -1,5 +1,8 @@
 #! /bin/bash
 
+# ./nextver.sh minor|major
+
+
 RE='[^0-9]*\([0-9]*\)[.]\([0-9]*\)[.]\([0-9]*\)\([0-9A-Za-z-]*\)'
 
 step="$1"
@@ -37,4 +40,9 @@ case "$step" in
     ;;
 esac
 
-echo "$MAJOR.$MINOR.$PATCH"
+semver="$MAJOR.$MINOR.$PATCH"
+
+echo "Version: $semver"
+
+# creating a tag with git
+git tag -a v$semver
